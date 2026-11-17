@@ -1,0 +1,55 @@
+### Get all books
+GET http://localhost:8081/api/books
+
+### Get one book
+GET http://localhost:8081/api/books/1
+
+### Search by author
+GET http://localhost:8081/api/books?author=martin
+
+### Search by title
+GET http://localhost:8081/api/books?title=java
+
+### Create a book
+POST http://localhost:8081/api/books
+Content-Type: application/json
+
+{
+  "title": "Head First Java",
+  "author": "Kathy Sierra",
+  "isbn": "978-0596009205",
+  "publishedYear": 2005
+}
+
+### Update a book
+PUT http://localhost:8081/api/books/1
+Content-Type: application/json
+
+{
+  "title": "Clean Code (2nd printing)",
+  "author": "Robert C. Martin",
+  "isbn": "978-0132350884",
+  "publishedYear": 2008
+}
+
+### Check a book out
+POST http://localhost:8081/api/books/1/checkout
+
+### Return a book
+POST http://localhost:8081/api/books/1/return
+
+### Delete a book
+DELETE http://localhost:8081/api/books/3
+
+### Error demo: invalid data (expect 400)
+POST http://localhost:8081/api/books
+Content-Type: application/json
+
+{
+  "title": "",
+  "author": "",
+  "isbn": ""
+}
+
+### Error demo: book not found (expect 404)
+GET http://localhost:8081/api/books/999
